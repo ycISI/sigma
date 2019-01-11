@@ -1,0 +1,25 @@
+title: Ransomware - Locky Payment Site IP Blacklist
+description: Detects blacklisted Locky Payment Site IPs
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+status: experimental
+references:
+    - https://ransomwaretracker.abuse.ch/blocklist/
+logsource:
+    category:
+        - webserver
+        - proxy
+        - dns
+detection:
+    selection:
+        ip address:
+          - 185.100.85.150
+          - 62.138.11.6
+          # 2 entries
+    condition: selection
+fields:
+    - ip
+    - dns
+falsepositives:
+    - Unknown
+level: high

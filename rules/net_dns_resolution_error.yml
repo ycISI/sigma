@@ -1,0 +1,70 @@
+title: DNS resolution error
+status: experimental
+description: Detects DNS resolution error
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+references:
+    - https://www.dropbox.com/s/hxgdn4vw2novpwy/Build%20It%20Once%20December%202018.pdf?dl=0
+    - https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml
+tags:
+logsource:
+    category:
+            - dns
+detection:
+    selection:
+        Keywords:
+            - 'ERR_NAME_NOT_RESOLVED'
+            - 'DNS server isn't responding'
+            - 'DNS server is not responding'
+            - 'DNS_PROBE_FINISHED_NO_INTERNET'
+            - 'DNS_PROBE_FINISHED_BAD_CONFIG'
+            - 'DNS resolution error'
+            - 'DNS address could not be found'
+            - 'DNS_PROBE_FINISHED_NXDOMAIN'
+            - 'SERVER NOT FOUND'
+            - 'DNS: Not working properly'
+            - '*_RESOURCE_NOT_FOUND'
+            - 'DNS Error'
+            - 'FORMERR' #Format Error
+            - 'SERVFAIL' #Server Failure
+            - 'NXDOMAIN' #Non-Existent Domain
+            - 'NOTIMP' #Not Implemented
+            - 'REFUSED' #Query Refused
+            - 'YXDOMAIN' #Name Exists when it should not
+            - 'YXRRSET' #RR Set exisits when it should not
+            - 'NOTAUTH' #Not authorized
+            - 'NOTZONE' #Name not contained in zone
+            - 'BADSIG' #TSIG Signature Failure
+            - 'BADVERS' #Bad OPT Version
+            - 'BADKEY' #Key not recognized
+            - 'BADTIME' #Signature out of time window
+            - 'BADMODE' #Bad TKEY Mode
+            - 'BADNAME' #Duplicate key name
+            - 'BADALG' #Algorithm not supported
+            - 'BADTRUNC' #Bad Truncation
+            - 'BADCOOKIE' #Bad/missing Server Cookie
+
+        Response Code:
+            - 'RCODE:1'
+            - 'RCODE:2'
+            - 'RCODE:3'
+            - 'RCODE:4'
+            - 'RCODE:5'
+            - 'RCODE:6'
+            - 'RCODE:7'
+            - 'RCODE:8'
+            - 'RCODE:9'
+            - 'RCODE:10'
+            - 'RCODE:16'
+            - 'RCODE:17'
+            - 'RCODE:18'
+            - 'RCODE:19'
+            - 'RCODE:20'
+            - 'RCODE:21'
+            - 'RCODE:22'
+            - 'RCODE:23'
+
+    condition: selection
+falsepositives:
+    - Unknown
+level: high

@@ -1,0 +1,20 @@
+title: Large amount of DNS traffic per IP address
+description: Detects Large amount of DNS traffic per IP address
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+logsource:
+    category: dns
+detection:
+    selection:
+        action: requests
+    timeframe: 30s
+    condition:
+        - selection | count(dst_port) by src_ip > 10
+fields:
+    - src_ip
+    - dst_ip
+falsepositives:
+    - Inventarization systems
+    - Vulnerability scans
+    - Penetration testing activity
+level: medium

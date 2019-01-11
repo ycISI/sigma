@@ -1,0 +1,27 @@
+title: Foxhole Database
+description: Detects Foxhole Databases which uses ClamAV engine to look inside certain container/archive files
+date: 2019/01/11
+author: Yulli Chong - InfoSec Innovations
+references:
+    - http://sanesecurity.com/foxhole-databases/
+tags:
+    - .cdb
+    - .ndb
+logsource:
+    product: mail server
+detection:
+    selection:
+        Signature:
+            - foxhole_generic.cdb
+            - foxhole_filename.cdb
+            - foxhole_js.cdb
+            - foxhole_js.ndb
+            - foxhole_all.cdb
+            - foxhole_all.ndb
+            - foxhole_mail.cdb
+    condition:
+fields:
+    - FileName
+falsepositives:
+    - unknown
+level: low to high

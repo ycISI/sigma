@@ -1,0 +1,28 @@
+title: NSTX DNS
+description: Detects potential NSTX DNS tunneling
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+status: experimental
+references:
+    - https://www.sans.org/reading-room/whitepapers/dns/detecting-dns-tunneling-34152
+logsource:
+    category: dns
+detection:
+    selection1:
+        content: "|01 00|"
+        offset: 2
+        within: 4
+
+    selection2:
+        content: "cT"
+        offset: 12
+        depth: 3
+
+    selection3:
+        content: "|00 10 00 01|"
+        within: 255
+
+    condition: selection
+falsepositives:
+    - Unknown
+level: medium

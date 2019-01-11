@@ -1,0 +1,26 @@
+title: Ransomware - TorrentLocker Payment Site IP Blacklist 
+description: Detects blacklisted TorrentLocker Payment Site IPs
+author: Yulli Chong - InfoSec Innovations
+date: 2018/11/27
+status: experimental
+references: 
+    - https://ransomwaretracker.abuse.ch/blocklist/
+logsource:
+    category: 
+        - webserver
+        - proxy
+        - dns
+detection:
+    selection:
+        ip address: 
+            - 103.224.182.250
+            - 176.9.172.166
+                # 2 entries
+    condition: selection
+fields:
+    - ip
+    - dns
+falsepositives:
+    - Unknown
+level: high
+

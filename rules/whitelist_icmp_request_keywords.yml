@@ -1,0 +1,30 @@
+title: Whitecap Rules (known good ICMP request) content
+description: Detects content for known good ICMP requests
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+references:
+    - https://github.com/sans-blue-team/NSM/blob/master/IDSRules/whitecap.rules
+
+logsource:
+    product: IDS
+detection:
+    content:
+      - "!\"#$%&'()*+,-./01234567"
+      - "abcdefghijklmnopqrstuvwabcdefghi"
+      - "WANG2"
+      - "SolarWinds Status Query"
+      - "?"
+      - "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+      - "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      - "DhcpIcmpChk"
+      - "SolarWinds.Net ICMP Version 5.0.4.16Copyright  1995-2005 SolarWinds.Net"
+      - "Orion Network Sonar Scan"
+      - "|00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00|"
+      - "|AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA|"
+      - "|00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00|"
+condition: content
+fields:
+falsepositives:
+    - Penetration Test
+    - Unknown
+level: critical

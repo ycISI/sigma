@@ -1,0 +1,151 @@
+title: Whitecap Rules (known good ICMP request)
+description: Detects 'Whitelisted' known good ICMP requests
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+references:
+    - https://github.com/sans-blue-team/NSM/blob/master/IDSRules/whitecap.rules
+
+logsource:
+    product: IDS
+
+detection:
+    ICMP rules:
+        selection1:
+          msg: "Whitecap: OSX or Linux ICMP Echo Request"
+          icode: 0
+          itype: 8
+          dsize: 56
+          content: "!\"#$%&'()*+,-./01234567"
+          classtype: misc-activity
+
+        selection2:
+          msg: "Whitecap: Windows XP/7/8 ICMP Echo Request"
+          icode: 0
+          itype: 8
+          dsize: 32
+          content: "abcdefghijklmnopqrstuvwabcdefghi"
+          classtype: misc-activity
+
+        selection3:
+          msg: "Whitecap: Nmap ICMP Echo Request"
+          icode: 0
+          itype: 8
+          dsize: 0
+          classtype: misc-activity
+
+        selection4:
+          msg: "Whitecap: Group Policy Slow Link Detection"
+          icode: 0
+          itype: 8
+          dsize: >1400
+          content: "WANG2"
+          classtype: misc-activity
+
+        selection5:
+          msg: "Whitecap: Solarwinds Status Query"
+          icode: 0
+          itype: 8
+          dsize: 23
+          content: "SolarWinds Status Query"
+          classtype: misc-activity
+
+        selection6:
+          msg: "Whitecap: Domain Controller ICMP Traffic"
+          icode: 0
+          itype: 8
+          dsize: 1
+          content: "?"
+          classtype: misc-activity
+
+        selection7:
+          msg: "Whitecap: McAfee ICMP ping requests"
+          icode: 0
+          itype: 8
+          dsize: 36
+          content: "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+          offset: 3
+          classtype: misc-activity
+
+        selection8:
+          msg: "Whitecap: Lots of Xs"
+          icode: 0
+          itype: 8
+          dsize: 32
+          content: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          classtype: misc-activity
+
+        selection9:
+          msg: "Whitecap: DHCP ICMP Duplicate IP Check"
+          icode: 0
+          itype: 8
+          dsize: 11
+          content: "DhcpIcmpChk"
+          classtype: misc-activity
+
+        selection10:
+          msg: "Whitecap: Solarwinds ICMP Version 5"
+          icode: 0
+          itype: 8
+          dsize: < 80
+          content: "SolarWinds.Net ICMP Version 5.0.4.16Copyright  1995-2005 SolarWinds.Net"
+          classtype: misc-activity
+
+        selection11:
+          msg: "Whitecap: Solarwinds Sonar ICMP Scan"
+          icode: 0
+          itype: 8
+          dsize: 24
+          content: "Orion Network Sonar Scan"
+          classtype: misc-activity
+
+        selection12:
+          dns server: $DNS_SERVERS #list dns servers
+          msg: "Whitecap: ICMP to DNS Servers"
+          icode: 0
+          itype: 8
+          dsize: <57
+          threshold:
+            - type limit
+            - track by_src
+            - count 1
+            - 60s
+          classtype: misc-activity
+
+        selection13:
+          msg: "Whitecap: Domain controller to domain controller"
+          icode: 0
+          itype: 8
+          dsize: 32
+          content: "|00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00|"
+          threshold:
+            - type limit
+            - track by_src
+            - count 1
+            - 60s
+          classtype: misc-activity
+
+        selection14:
+          msg: "Whitecap: All As"
+          icode: 0
+          itype: 8
+          dsize: 64
+          content: "|AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA AA|"
+          classtype: misc-activity
+
+        selection15:
+          msg: "Whitecap: All 0s"
+          icode: 0
+          itype: 8
+          dsize: 56
+          content: "|00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00|"
+          classtype: misc-activity
+
+    condition:
+      - icmp rules
+      - selection
+fields:
+    - ???
+falsepositives:
+    - Penetration Test
+    - Unknown
+level: critical

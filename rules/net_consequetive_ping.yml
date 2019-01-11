@@ -1,0 +1,22 @@
+title: Too Many Consequetive Ping Replies
+description: Detects Too Many Consequetive Ping Replies within a given time
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+logsource:
+    category: firewall
+detection:
+    selection:
+        action: reply
+    timeframe: 30s
+    condition:
+        - selection | count(dst_port) by src_ip > 10
+        - selection | count(dst_ip) by src_ip > 10
+fields:
+    - src_ip
+    - dst_ip
+    - dst_port
+falsepositives:
+    - Inventarization systems
+    - Vulnerability scans
+    - Penetration testing activity
+level: medium
