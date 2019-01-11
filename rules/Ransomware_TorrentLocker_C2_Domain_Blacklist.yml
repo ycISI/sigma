@@ -1,0 +1,56 @@
+title: Ransomware - TorrentLocker C2 Domain Blacklist
+description: Detects blacklisted Torrentlocker C2 domains
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+status: experimental
+references:
+    - https://ransomwaretracker.abuse.ch/blocklist/
+logsource:
+    category:
+        - webserver
+        - proxy
+detection:
+    selection:
+        domain:
+            - dirtyslim.org
+            - bigdoggi.biz
+            - kinomix.org
+            - verekt.biz
+            - feellgood.org
+            - baggir.org
+            - olimpian.org
+            - bedrifg.org
+            - velodrivve.biz
+            - freemooon.org
+            - redtable.biz
+            - dumberg.org
+            - vitrok.org
+            - sfasdik.com
+            - vizkore.biz
+            - cerbyk.org
+            - hgdre.org
+            - ghdeg.com
+            - gfjhfg.com
+            - geriky.org
+            - fhgetyh.com
+            - xxryposdrt.org
+            - velajsweg.com
+            - oprtiwyx.com
+            - nerfetyv.org
+            - ropytowero.com
+            - wotreposdo.net
+            - birufolen.com
+            - sawsvore.net
+            - pakezspohos.org
+            - kowoplosezox.com
+            - xefarporove.net
+            - peqbkinexyr.org
+            # 33 entries
+    condition: selection
+fields:
+    - domain
+    - dns
+falsepositives:
+    - Unknown
+tags:
+level: high

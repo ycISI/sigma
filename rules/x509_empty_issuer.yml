@@ -1,0 +1,22 @@
+title: x509 empty issuer fields
+description: Detects empty issuer fields in x509 certificate
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+status: experimental
+references:
+
+logsource:
+    category:
+        - ssl
+detection:
+    selection1:
+        O: ''
+    selection2:
+        C: ''
+condition: selection
+fields:
+    - issuer
+falsepositives:
+    - Unknown
+tags:
+level: high

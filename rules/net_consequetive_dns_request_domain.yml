@@ -1,0 +1,19 @@
+title: Large amount of DNS traffic per domain
+description: Detects Large amount of DNS traffic per domain
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+logsource:
+    category: dns
+detection:
+    selection:
+        action: requests
+    timeframe: 30s
+    condition:
+        - selection | count by host > 10
+fields:
+    - host
+falsepositives:
+    - Inventarization systems
+    - Vulnerability scans
+    - Penetration testing activity
+level: medium

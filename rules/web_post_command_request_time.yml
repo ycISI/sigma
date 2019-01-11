@@ -1,0 +1,27 @@
+title: Large amount POST command Request
+status: experimental
+description: Detects Large amount of POST command requests within a given time
+references:
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+logsource:
+    category:
+        - dns
+        - webserver
+        - proxy
+detection:
+    selection:
+        keyword:
+            - 'POST'
+    timeframe: 5s
+    condition:
+        - selection | count by src_ip > 10
+        - selection | count by dst_ip > 10
+fields:
+    - Info
+    - Command
+    - src_ip
+    - dst_ip
+falsepositives:
+    - Unknown
+level: critical

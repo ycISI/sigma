@@ -1,0 +1,59 @@
+title: Ransomware Shade/Troldesh from infected Windows host
+description: Detects Shade/Troldesh files in compromised Windows Host
+date: 2019/01/11
+author: Yulli Chong - InfoSec Innovations
+references:
+    - https://isc.sans.edu/forums/diary/Russian+language+malspam+pushing+Shade+Troldesh+ransomware/24358/
+logsource:
+    product: Windows
+
+detection:
+    selection1:
+        #Attached zip archive from a malspam email
+        SHA256 Hash:
+            - 5f50dcf06dd5fb51b26f815fd8ff6d4a5afa7301e9c7923ea8f75b2b1e224f82
+        File Size:
+            - 2,645 bytes
+        FileName:
+            - '*\Okritie.zakaz.docx.zip'
+        condition: selection
+
+    selection2:
+        #Extracted JS file from a malspam email
+        SHA256 Hash:
+            - e51f36811056d71c970791223da17c3f5b4d84394063a42eb8f2c432e97dba7a
+        File Size:
+            - 5,317 bytes
+        File name:
+            - '*.js'
+        condition: selection
+
+    Selection3:
+        #Initial Shade/Troldesh executable retrieved by a JS file
+        SHA256 Hash:
+            - d5fe31471af8abcd884108fbbfe776c3df6c988a865e401fc83ccbdfe030ed4e
+        File Size:
+            - 1,405,704 bytes
+        File location:
+            - 'C:\Users\*\AppData\Local\Temp\rad012AB.tmp'   #(random hex digits)
+            - 'C:\ProgramData\services\csrss.exe'
+        condition: selection
+
+      Selection4:
+        #additional malware found on the same infected host
+        SHA256 Hash:
+            -  2824a8ce0e65bb185a88ff1fe5f1df202405c42b6705a420dbc07c565a44b240
+        File Size:
+            - 1,635,840 bytes
+        File Location:
+            - 'C:\Users\[username]\AppData\Local\Temp\0123ABCD.exe' #(random hex digits)
+            - 'C:\ProgramData\Windows\csrss.exe'
+        condition: selection
+fields:
+    - hash
+    - file name
+    - file size
+    - file location
+falsepositives:
+    - unknown
+level: high

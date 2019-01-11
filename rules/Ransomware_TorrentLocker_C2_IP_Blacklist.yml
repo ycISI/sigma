@@ -1,0 +1,26 @@
+title: Ransomware - TorrentLocker C2 IP Blacklist
+description: Detects blacklisted TorrentLocker C2 IPs
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+status: experimental
+references:
+    - https://ransomwaretracker.abuse.ch/blocklist/
+logsource:
+    category:
+        - webserver
+        - proxy
+detection:
+    selection:
+        ip:
+        - 194.58.56.103
+        - 194.58.56.184
+        - 194.58.56.190
+        - 194.58.56.64
+        # 4 entries
+    condition: selection
+fields:
+    - ip
+    - dns
+falsepositives:
+    - Unknown
+level: high

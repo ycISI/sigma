@@ -1,0 +1,315 @@
+title: Ransomware - Shade (Troldesh)
+description: Detects indicators for Shade (Troldesh) ransomware
+author: Yulli Chong - InfoSec Innovations
+date: 2019/01/11
+status: experimental
+references:
+    - https://isc.sans.edu/forums/diary/Russian+language+malspam+pushing+Shade+Troldesh+ransomware/24358/
+    - https://urlhaus.abuse.ch/browse/tag/troldesh/
+    - https://urlhaus.abuse.ch/browse/tag/shade/
+logsource:
+    category:
+        - webserver
+        - mailserver
+        - proxy
+        - dns
+    service:
+        - ip address check
+        - TOR traffic
+        - smtp.mail.ru
+detection:
+    selection:
+        keyword:
+            - sserv.jpg
+        URL:
+            #tag: SHADE 39 entries
+            - http://milano.today/wp-content/themes/search-and-go/licence/sserv.jpg
+            - http://receitasmamae.com/wp-content/themes/poseidon/css/genericons/sserv.jpg
+            - http://credit-invest.info/images/bagallery/gallery-1/thumbnail/category-1/sserv.jpg
+            - http://gamaberita.com/.well-known/pki-validation/sserv.jpg
+            - http://mysmilekart.com/journal/cache/sserv.jpg
+            - http://test.kalaakart.in/sserv.jpg
+            - http://marosprint.hu/templates/siteground-j15-138/css/sserv.jpg
+            - http://lilaafit.xyz/wp-content/themes/twentyseventeen/template-parts/footer/sserv.jpg
+            - http://tiesmedia.com/sserv.jpg
+            - http://rhinoarabia.site/code.jquery.com/sserv.jpg
+            - http://grandholidayvacations.in/AdminEmail/admin/css/sserv.jpg
+            - http://buivanhuy.com/templates/boker/css/fontawesome/css/sserv.jpg
+            - http://ansaigon.com/templates/tm_parallaite/features/sserv.jpg
+            - https://chasehematite.com/wp-content/themes/rara-business/sections/sserv.jpg
+            - http://tuhoctiengduc.asia/wp-includes/ID3/sserv.jpg
+            - http://nexusonedegoogle.com/wp-includes/ID3/sserv.jpg
+            - http://conseil-btp.fr/wp-snapshots/sserv.jpg
+            - http://www.izmirlipilavciadnan.com/wp-content/themes/twentyseventeen/assets/css/sserv.jpg
+            - http://xn--e1adigbdjz5k.xn--p1ai/includes/sserv.jpg
+            - https://inspierasibunda.win/wp-content/themes/superfast/images/sserv.jpg
+            - http://fnbadventure.com/components/com_ajax/sserv.jpg
+            - http://yueltoursandtreks.com/components/com_ajax/sserv.jpg
+            - http://azhub.us/.well-known/pki-validation/sserv.jpg
+            - http://www.mrtaotao.com/wp-content/themes/pacify/images/sserv.jpg
+            - http://deepakasso.com/wp-content/themes/advisor/fonts/chrome.jpg
+            - http://vincity-oceanpark-gialam.com/wp-content/cache/blogs/sserv.jpg
+            - http://healthcuresandremedies.site/wp-admin/css/colors/blue/sserv.jpg
+            - http://immergasteknikservisibursa.com/js/views/sserv.jpg
+            - http://xedaptreem.net/.well-known/acme-challenge/sserv.jpg
+            - http://tehranbehdasht.org/wp-content/themes/design/themew...
+            - http://kalrobotics.tech/wp-content/blogs.dir/sserv.jpg
+            - http://compagnons-alzheimer.com/wp-includes/ID3/sserv.jpg
+            - https://www.minhajwelfare.org/wp-content/themes/charityhub-v1-06/languages/sserv.jpg
+            - http://friendsfirst.online/NotLive/PHP/sserv.jpg
+            - http://evenarte.com/plugins/authentication/sserv.jpg
+            - https://alaweercapital.com/wp-content/themes/financepress/js/sserv.jpg
+            - http://itimius.com/wp-content/themes/sensible-wp/fonts/chrome.exe
+            - http://blissmen.com/.well-known/acme-challenge/chrome.exe
+            - http://nauticalpromo.com/wp-includes/ID3/chrome.jpg
+
+            #tag: troldesh 72 entries
+            - http://yourfunapps.ga/js/sserv.jpg
+            - http://mysmilekart.com/journal/cache/sserv.jpg
+            - http://test.kalaakart.in/sserv.jpg
+            - http://marosprint.hu/templates/siteground-j15-138/css/sserv.jpg
+            - http://lilaafit.xyz/wp-content/themes/twentyseventeen/template-parts/footer/sserv.jpg
+            - http://tiesmedia.com/sserv.jpg
+            - http://rhinoarabia.site/code.jquery.com/sserv.jpg
+            - http://grandholidayvacations.in/AdminEmail/admin/css/sserv.jpg
+            - http://buivanhuy.com/templates/boker/css/fontawesome/css/sserv.jpg
+            - http://ansaigon.com/templates/tm_parallaite/features/sserv.jpg
+            - https://chasehematite.com/wp-content/themes/rara-business/sections/sserv.jpg
+            - http://tuhoctiengduc.asia/wp-includes/ID3/sserv.jpg
+            - http://nexusonedegoogle.com/wp-includes/ID3/sserv.jpg
+            - http://conseil-btp.fr/wp-snapshots/sserv.jpg
+            - http://www.izmirlipilavciadnan.com/wp-content/themes/twentyseventeen/assets/css/sserv.jpg
+            - http://xn--e1adigbdjz5k.xn--p1ai/includes/sserv.jpg
+            - https://inspierasibunda.win/wp-content/themes/superfast/images/sserv.jpg
+            - http://fnbadventure.com/components/com_ajax/sserv.jpg
+            - http://yueltoursandtreks.com/components/com_ajax/sserv.jpg
+            - http://azhub.us/.well-known/pki-validation/sserv.jpg
+            - http://www.mrtaotao.com/wp-content/themes/pacify/images/sserv.jpg
+            - http://deepakasso.com/wp-content/themes/advisor/fonts/chrome.jpg
+            - http://vincity-oceanpark-gialam.com/wp-content/cache/blogs/sserv.jpg
+            - http://healthcuresandremedies.site/wp-admin/css/colors/blue/sserv.jpg
+            - http://immergasteknikservisibursa.com/js/views/sserv.jpg
+            - http://novashr.com/wp-includes/ID3/sserv.jpg
+            - http://camilastexmex.com/wp-content/themes/hotel-galaxy/pages/sserv.jpg
+            - http://natboutique.com/templates/Natboutiqueproject/images/sserv.jpg
+            - http://xedaptreem.net/.well-known/acme-challenge/sserv.jpg
+            - http://tehranbehdasht.org/wp-content/themes/design/themework.ir/css/sserv.jpg
+            - http://scooter.nucleus.odns.fr/sserv.jpg
+            - http://bekamp3.com/wp-content/cache/meta/sserv.jpg
+            - http://kalrobotics.tech/wp-content/blogs.dir/sserv.jpg
+            - http://compagnons-alzheimer.com/wp-includes/ID3/sserv.jpg
+            - https://www.minhajwelfare.org/wp-content/themes/charityhub-v1-06/languages/sserv.jpg
+            - http://friendsfirst.online/NotLive/PHP/sserv.jpg
+            - http://banjojimonline.com/wp-content/languages/plugins/sserv.jpg
+            - http://javcoservices.com/wp-content/themes/pressroom/languages/sserv.jpg
+            - http://dishsouq.com/wp-admin/css/colors/blue/sserv.jpg
+            - http://whoshouldbepresident.com/wp-content/themes/point/css/sserv.jpg
+            - https://servis-sto.org/wp-content/themes/Avada/woocommerce/cart/sserv.jpg
+            - http://laflamme-heli.com/wp-includes/ID3/sserv.jpg
+            - http://stroy.th12dev.com/cache/mod_bt_contentshowcase/sserv.jpg
+            - http://evenarte.com/plugins/authentication/sserv.jpg
+            - https://alaweercapital.com/wp-content/themes/financepress/js/sserv.jpg
+            - http://chishtiafoods.com/assets/css/sserv.jpg
+            - http://jyovens.com/wp-content/themes/borrow/css/fontello/oplata.zip
+            - http://tourismwings.com/wp-content/themes/daily-news/inc/kirki/assets/css/chrome.exe
+            - http://bestteahouse.com/wp-content/themes/i-excel/languages/chrome.exe
+            - http://belanwalibahu.club/wp-admin/css/colors/blue/oplata.zip
+            - http://jarahpack.com/wp-content/themes/al-jarrah-industrues/jq/chrome.exe
+            - http://hydronauta.win/wp-content/themes/accelerate/css/admin/oplata.zip
+            - https://acquainaria.com/bia/Scan724.zip
+            - https://c-elysee.joonik.com/dateup.exe
+            - http://trotarhub.com/.well-known/pki-validation/chrome.exe
+            - http://theshoremalacca.com/wp-content/themes/albist-wp/js/oplata.zip
+            - http://pknstan2018.com/wp-includes/ID3/oplata.zip
+            - http://paranak.com/templates/npco/css/chrome.exe
+            - http://ahmadalhanandeh.com/wp-content/themes/wanium/languages/chrome.exe
+            - http://vadavo.info/wp-content/themes/twentyseventeen/template-parts/footer/oplata.zip
+            - http://tokenon.com/misc/farbtastic/chrome.exe
+            - http://www.5557100.com/wp-content/themes/twentytwelve/js/oplata.zip
+            - http://nusakontras.com/.well-known/pki-validation/oplata.zip
+            - http://marasgezikulubu.com/wp-content/themes/twentyseventeen/inc/chrome.exe
+            - http://thaidocdaitrang.com/wp-includes/ID3/oplata.zip
+            - http://webing.com.mx/wp-content/themes/wallstreet/functions/breadcrumbs/chrome.exe
+            - http://suanhatruongphong.com/wp-includes/ID3/oplata.zip
+            - http://xxxtetonas.top/wp-content/languages/plugins/chrome.exe
+            - http://www.bygoldi.com/wp-content/themes/wipi/gravityforms/css/chrome.exe
+            - http://jitsupa.com/css/chrome.exe
+            - http://www.finepuer.com/sites/all/oplata.zip
+            - http://redclean.co.uk/new/Akt1809.zip
+
+            #URL generated by extracted JS files in malspam
+            - hxxp://bosnasport[.]info/wp-content/plugins/ad-inserter/css/images/chrome.jpg
+            - hxxp://deepakasso[.]com/wp-content/themes/advisor/fonts/chrome.jpg
+            - hxxp://www.mrtaotao[.]com/wp-content/themes/pacify/images/sserv.jpg
+            - hxxp://azhub[.]us/.well-known/pki-validation/sserv.jpg
+            - hxxp://yueltoursandtreks[.]com/components/com_ajax/sserv.jpg
+            - hxxp://fnbadventure[.]com/components/com_ajax/sserv.jpg
+            - hxxp://xn--e1adigbdjz5k[.]xn--p1ai/includes/sserv.jpg
+            - hxxps://inspierasibunda[.]win/wp-content/themes/superfast/images/sserv.jpg
+            - hxxp://www.izmirlipilavciadnan[.]com/wp-content/themes/twentyseventeen/assets/css/sserv.jpg
+            - hxxp://conseil-btp[.]fr/wp-snapshots/sserv.jpg
+            - hxxp://nexusonedegoogle[.]com/wp-includes/ID3/sserv.jpg
+            - hxxp://tuhoctiengduc[.]asia/wp-includes/ID3/sserv.jpg
+            - hxxp://immergasteknikservisibursa[.]com/js/views/sserv.jpg
+            - hxxps://chasehematite[.]com/wp-content/themes/rara-business/sections/sserv.jpg
+            - hxxp://ansaigon[.]com/templates/tm_parallaite/features/sserv.jpg
+            - hxxp://buivanhuy[.]com/templates/boker/css/fontawesome/css/sserv.jpg
+            - hxxp://grandholidayvacations[.]in/AdminEmail/admin/css/sserv.jpg
+            - hxxp://rhinoarabia[.]site/code.jquery.com/sserv.jpg
+            - hxxp://tiesmedia[.]com/sserv.jpg
+            - hxxp://lilaafit[.]xyz/wp-content/themes/twentyseventeen/template-parts/footer/sserv.jpg
+            - hxxp://marosprint[.]hu/templates/siteground-j15-138/css/sserv.jpg
+            - hxxp://test.kalaakart[.]in/sserv.jpg
+            - hxxp://vincity-oceanpark-gialam[.]com/wp-content/cache/blogs/sserv.jpg
+            - hxxp://mysmilekart[.]com/journal/cache/sserv.jpg
+        Hosts:
+            - 5557100.com
+            - acquainaria.com
+            - ahmadalhanandeh.com
+            - alaweercapital.com
+            - ansaigon.com
+            - azhub.us
+            - banjojimonline.com
+            - bekamp3.com
+            - belanwalibahu.club
+            - bestteahouse.com
+            - blissmen.com
+            - buivanhuy.com
+            - bygoldi.com
+            - camilastexmex.com
+            - c-elysee.joonik.com
+            - chasehematite.com
+            - chishtiafoods.com
+            - compagnons-alzheimer.com
+            - conseil-btp.fr
+            - credit-invest.info
+            - deepakasso.com
+            - dishsouq.com
+            - evenarte.com
+            - finepuer.com
+            - fnbadventure.com
+            - friendsfirst.online
+            - gamaberita.com
+            - grandholidayvacations.in
+            - healthcuresandremedies.site
+            - hydronauta.win
+            - immergasteknikservisibursa.com
+            - inspierasibunda.win
+            - itimius.com
+            - izmirlipilavciadnan.com
+            - jarahpack.com
+            - javcoservices.com
+            - jitsupa.com
+            - jyovens.com
+            - kalrobotics.tech
+            - laflamme-heli.com
+            - lilaafit.xyz
+            - marasgezikulubu.com
+            - marosprint.hu
+            - milano.today
+            - minhajwelfare.org
+            - mrtaotao.com
+            - mysmilekart.com
+            - natboutique.com
+            - nauticalpromo.com
+            - nexusonedegoogle.com
+            - novashr.com
+            - nusakontras.com
+            - paranak.com
+            - pknstan2018.com
+            - receitasmamae.com
+            - redclean.co.uk
+            - rhinoarabia.site
+            - scooter.nucleus.odns.fr
+            - servis-sto.org
+            - stroy.th12dev.com
+            - suanhatruongphong.com
+            - tehranbehdasht.org
+            - test.kalaakart.in
+            - thaidocdaitrang.com
+            - theshoremalacca.com
+            - tiesmedia.com
+            - tokenon.com
+            - tourismwings.com
+            - trotarhub.com
+            - tuhoctiengduc.asia
+            - vadavo.info
+            - vincity-oceanpark-gialam.com
+            - webing.com.mx
+            - whoshouldbepresident.com
+            - xedaptreem.net
+            - xn--e1adigbdjz5k.xn--p1ai
+            - xxxtetonas.top
+            - yourfunapps.ga
+            - yueltoursandtreks.com
+            # 79 entries
+        email sender (spoofed):
+            - schreib@cafe-kurkuma.at
+            - sergiotamagno@bariloche.com.ar
+            - sylvana-b@corail.nc
+            - myfinkl@joseilbo.com
+            - flemminghoenig@posteo.de
+            - marketing@leuchtturmapotheke.de
+            - obchod@interstore.sk
+            - kontakt@zahnarzt-dr-hamel.de
+            - lan@sc-weyregg.com
+            - acaengin1111@web.de
+            - dieter@aschenbrenner-gruenwalk.de
+            - Mareen.Stilz@gmx.de
+            #12 entries
+        attachments:
+            - zakaz.doc.zip
+            - Gazprombank.zakaz.docx.zip
+            - otkritie-zapros.16.11.docx.zip
+            - Okritie.zakaz.docx.zip
+            #4 entries
+        Hashes:
+            #SHA256 for zip archives
+            - 249b86cc2bd5b28f77b9a61b1b66ed704aefe0be27e44e4e620c65b61b089b92
+            - ff87a5ca1ee240be8f788c3c3affeee46dea2a63c8cd9963130dcb223388dc6f
+            - b339aa8060210319472e5fcf935e509c95224c6933fc16e9468d8b48773a5950
+            - c70163783d5ce1307802a551b8ef0c080a3881ed90c41685e2624135ea5fd6e2
+            - 4179695f015fb1c8337be67a2e974fcf5dc4fa4b116f6223763b10e67d76b1a1
+            - 1f5de330ceef0c53799c53d54b47531656d9a1b8b271be59dc99cf90aafd12a9
+            - b3cfdcd6ffd0e08a55fb9d27a02883e7a7eaecf6fd14a4613984b3ed67feb166
+            - 3dc38475216d694062172bdc78ae4204755b026b544737ed5891c744acc49eca
+            - 0b72cc16d752ef266bcc655075c53658ecc05d28c57b9bc73806f15a03f5ab4a
+            - 1dff4e9d17948095a247edeb23c38e940ea163d6b103869e4abc8aa597a630cb
+            - 4cd6e03e7ce7e808e8c8c1f3f21bbecdc7b385f156bcc7ee2390c8c6316fd60c
+            - 5f50dcf06dd5fb51b26f815fd8ff6d4a5afa7301e9c7923ea8f75b2b1e224f82
+
+            #SHA256 for extracted JS files
+            - db5fa717b638d86af42cb1db96002d7e264f9b474bbd34bf3a229bbea0fcc3fc
+            - ca3becff92c6fae2434e57cdc34f1a1ed96d4bf64bb6c0806dd220c71197faa0
+            - 2dbdd1d06b37835efeb029ce06ad4d8b6eb334e7702f62e8b1572c2b9c0f0983
+            - 4183405b950db6a04d762bb97d27e144a98419755afa7b02a2e353ac2eb2cb08
+            - 79cf9a53a96bd9aa7c9f04a90bd3b29f6b48eeb35ac41adba03de143578f60a1
+            - 6d0205bca14df731a4aae8a7d8b0e9b5bbc3599a70c89dd2d2ffc4f6290df588
+            - c5c0d0ee70e9e9a25263bca43009061dce8758f839d265ed154d6d064bc31280
+            - 592fb4fea1d8c9a9a12e55cf4c2817f0f6467d344460c711d4192dd9ebda32e9
+            - 8a4863db3d778387f9d2809481a08a585f20a31022de603c50b9b07f2f4c2860
+            - 29feff2c97027661301e2baa1b83bdf40ffb1a56afcfec6ba7811ceaf7bb0c87
+            - 13d674b64e66a97d40fb6f38237b450a3af95310d7ed008954c8ab2760361165
+            - e51f36811056d71c970791223da17c3f5b4d84394063a42eb8f2c432e97dba7a
+
+            #SHA256 retrieved from URLs
+            - 0b5ed93a5da40cec20f414028fab9ada951745455c8e982ff67ac39590b9768a
+            - 1e01f8ef1610dce5983c628f55d187757af14e3f0ee1bd94e63435bf647177cf
+            - 94e39e9710ab725aefe4d7dffe3b93e447210e3b322666b9c8d42b3622094878
+            - 981e0d084f78e268294fe3c0a5ecc4869bb189aff927a6b6a5da0cad61b4fca4
+            - a39dc4dc4e01a6c0c819c1fa9faa63811dd2978af85d4474cdc4dfa3dd0601a2
+            - af02d3501fc954f435a0569fd727af9377d54891b4690ccbf7e3e10bf1f6c0dc
+            - d5fe31471af8abcd884108fbbfe776c3df6c988a865e401fc83ccbdfe030ed4e
+            - f140cab283c35c92dc74db53b6d9964706538554d4151a637a406b093746692b
+            - fec5824e87550fc4981606030d7b74f6d00b001de536916b95f7c1d24a8113d8
+    condition: selection
+fields:
+    - sender
+    - attachment
+    - download
+    - ip address
+tag:
+    - abuse.ch
+falsepositives:
+    - Unknown
+level: high
