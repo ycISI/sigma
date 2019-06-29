@@ -1,0 +1,76 @@
+title: Amazon Simpledb Database Errors
+status: experimental
+description: Detects Amazon Simpledb Database Errors
+author: Yulli Chong - InfoSec Innovations
+date: 06/29/2019
+references:
+        - https://docs.aws.amazon.com/AmazonSimpleDB/latest/DeveloperGuide/APIError.html
+tags:
+logsource:
+    category:
+            - Amazon Simpledb logsource
+detection:
+    selection:
+        Keywords:
+          - URITooLong #The URI exceeded the maximum limit of "+ maxLength".
+          - UnsupportedNextToken #The specified next token is no longer supported. Please resubmit your query.
+          - UnsupportedHttpVerb #The requested HTTP verb is not supported: " + verb".
+          - TooManyRequestedAttributes  #Too many attributes requested.
+          - RequestExpired #Request has expired. " + paramType + " date is " + date".
+          - InvalidAction #The action " + actionName + " is not valid for this web service.
+          - InvalidHTTPAuthHeader #The HTTP authorization header is bad, use " + correctFormat".
+          - InvalidHttpRequest #The HTTP request is invalid. Reason: " + reason".
+          - InvalidLiteral #Illegal literal in the filter expression.
+          - InvalidNextToken #The specified next token is not valid.
+          - InvalidNumberPredicates #Too many predicates in the query expression.
+          - InvalidNumberValueTests #Too many value tests per predicate in the query expression.
+          - InvalidParameterCombination #The parameter " + param1 + " cannot be used with the parameter " + param2".
+          - InvalidParameterValue #Value (" + value + ") for parameter MaxNumberOfDomains is invalid. MaxNumberOfDomains must be between 1 and 100.
+                                  #Value (" + value + ") for parameter MaxNumberOfItems is invalid. MaxNumberOfItems must be between 1 and 2500.
+                                  #Value (" + value + ") for parameter MaxNumberOfDomains is invalid. MaxNumberOfDomains must be between 1 and 100.
+                                  #Value (" + value + ") for parameter " + paramName + " is invalid. " + reason".
+                                  #Value (" + value + ") for parameter Name is invalid. Value exceeds maximum length of 1024.
+                                  #Value (" + value + ") for parameter Value is invalid. Value exceeds maximum length of 1024.
+                                  #Value (" + value + ") for parameter DomainName is invalid.
+                                  #Value (" + value + ") for parameter Replace is invalid. The Replace flag should be either true or false.
+                                  #Value (" + value + ") for parameter Expected.Exists is invalid. Expected.Exists should be either true or false.
+                                  #Value (" + value + ") for parameter Name is invalid.The empty string is an illegal attribute name
+                                  #Value (" + value + ") for parameter Value is invalid. Value exceeds maximum length of 1024.
+                                  #Value (" + value + ") for parameter ConsistentRead is invalid. The ConsistentRead flag should be either true or false.
+          - InvalidQueryExpression #The specified query expression syntax is not valid.
+          - InvalidResponseGroups #The following response groups are invalid: " + invalidRGStr.
+          - InvalidService #The Web Service " + serviceName + " does not exist.
+          - InvalidSortExpression #The sort attribute must be present in at least one of the predicates, and the predicate cannot contain the is null operator.
+          - InvalidURI #The URI " + requestURI + " is not valid.
+          - InvalidWSAddressingProperty #WS-Addressing parameter " + paramName + " has a wrong value: " + paramValue".
+          - InvalidWSDLVersion #Parameter (" + parameterName +") is only supported in WSDL version 2009-04-15 or beyond. Please upgrade to new version
+          - MissingAction #No action was supplied with this request.
+          - MissingParameter #The request must contain the specified missing parameter.
+                             #The request must contain the parameter " + paramName".
+                             #The request must contain the parameter ItemName.
+                             #The request must contain the parameter DomainName.
+                             #Attribute.Value missing for Attribute.Name='name'.
+                             #Attribute.Name missing for Attribute.Value='value'.
+                             #No attributes for item ='" + itemName + "'.
+                             #The request must contain the parameter Name
+          - MissingWSAddressingProperty #WS-Addressing is missing a required parameter (" + paramName + ")".
+          - MultipleExistsConditions #Only one Exists condition can be specified
+          - MultipleExpectedNames #Only one Expected.Name can be specified
+          - MultipleExpectedValues #Only one Expected.Value can be specified
+          - MultiValuedAttribute #Attribute (" + name + ") is multi-valued. Conditional check can only be performed on a single-valued attribute
+          - NoSuchDomain #The specified domain does not exist.
+          - NoSuchVersion #The requested version (" + version + ") of service " + service + " does not exist.
+          - QueryTimeout #A timeout occurred when attempting to query domain <domain name> with query expression <query expression>. BoxUsage [<box usage value>]".
+          - AuthFailure #AWS was not able to validate the provided access keys.
+          - AuthMissingFailure #AWS was not able to authenticate the request: access keys are missing.
+        HTTP Status Code:
+            - 400 Bad Request
+            - 408 Request timeout
+            - 403 Forbidden
+    condition: selection
+fields:
+    - Error
+    - HTTP Status Code
+falsepositives:
+    - Unknown
+level: high

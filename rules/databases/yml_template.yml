@@ -1,0 +1,25 @@
+title: Database Errors
+status: experimental
+description: Detects Database Errors
+author: Yulli Chong - InfoSec Innovations
+date:
+references:
+
+tags:
+logsource:
+    category:
+            - <Name of database>
+detection:
+    selection:
+        Keywords:
+
+        Error Code:
+
+
+    condition: selection
+fields:
+    - Error
+    - HTTP Status Code 
+falsepositives:
+    - Unknown
+level: high
