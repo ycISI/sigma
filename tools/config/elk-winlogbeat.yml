@@ -1,3 +1,12 @@
+title: Elastic Winlogbeat index pattern and field mapping
+order: 20
+backends:
+  - es-qs
+  - es-dsl
+  - kibana
+  - xpack-watcher
+  - elastalert
+  - elastalert-dsl
 logsources:
   windows:
     product: windows
@@ -27,6 +36,11 @@ logsources:
     service: driver-framework
     conditions:
       source: 'Microsoft-Windows-DriverFrameworks-UserMode/Operational'
+  windows-dhcp:
+    product: windows
+    service: dhcp
+    conditions:
+      source: 'Microsoft-Windows-DHCP-Server/Operational'
 defaultindex: winlogbeat-*
 # Extract all field names qith yq:
 # yq -r '.detection | del(.condition) | map(keys) | .[][]' $(find sigma/rules/windows -name '*.yml') | sort -u | grep -v ^EventID$ | sed 's/^\(.*\)/    \1: event_data.\1/g'
@@ -63,6 +77,8 @@ fieldmappings:
     ImageLoaded: event_data.ImageLoaded
     ImagePath: event_data.ImagePath
     Imphash: event_data.Imphash
+    IpAddress: event_data.IpAddress
+    KeyLength: event_data.KeyLength
     LogonProcessName: event_data.LogonProcessName
     LogonType: event_data.LogonType
     NewProcessName: event_data.NewProcessName
@@ -71,11 +87,14 @@ fieldmappings:
     ObjectType: event_data.ObjectType
     ObjectValueName: event_data.ObjectValueName
     ParentCommandLine: event_data.ParentCommandLine
+    ParentProcessName: event_data.ParentProcessName
     ParentImage: event_data.ParentImage
     Path: event_data.Path
     PipeName: event_data.PipeName
+    ProcessCommandLine: event_data.ProcessCommandLine
     ProcessName: event_data.ProcessName
     Properties: event_data.Properties
+    SecurityID: event_data.SecurityID
     ServiceFileName: event_data.ServiceFileName
     ServiceName: event_data.ServiceName
     ShareName: event_data.ShareName
@@ -85,6 +104,7 @@ fieldmappings:
     StartModule: event_data.StartModule
     Status: event_data.Status
     SubjectUserName: event_data.SubjectUserName
+    SubjectUserSid: event_data.SubjectUserSid
     TargetFilename: event_data.TargetFilename
     TargetImage: event_data.TargetImage
     TargetObject: event_data.TargetObject

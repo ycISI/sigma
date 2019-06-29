@@ -1,3 +1,8 @@
+title: Splunk Windows log source conditions
+order: 20
+backends:
+  - splunk
+  - splunkxml
 logsources:
   windows-application:
     product: windows
@@ -60,5 +65,10 @@ logsources:
     service: ntlm
     conditions:
       source: 'Microsoft-Windows-NTLM/Operational'
+  windows-dhcp:
+    product: windows
+    service: dhcp
+    conditions: 
+      source: 'Microsoft-Windows-DHCP-Server/Operational'
 fieldmappings:
     EventID: EventCode

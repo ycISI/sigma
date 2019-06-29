@@ -1,3 +1,7 @@
+title: NetWitness
+order: 20
+backends:
+  - netwitness
 logsources:
   linux:
     product: linux
@@ -30,6 +34,12 @@ logsources:
     service: powershell
     conditions:
       device.type: winevent_nic
+  windows-dhcp:
+    product: windows
+    service: dhcp
+    conditions: 
+      device.type: winevent_nic
+      event.source: microsoft-windows-dhcp-server
   windows-sec:
     product: windows
     service: security

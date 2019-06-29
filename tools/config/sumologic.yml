@@ -1,3 +1,7 @@
+title: SumoLogic
+order: 20
+backends:
+  - sumologic
 # Sumulogic mapping depends on customer configuration. Adapt to your context!
 # typically rule on _sourceCategory, _index or Field Extraction Rules (FER)
 # supposing existing FER for service, EventChannel, EventID
@@ -43,6 +47,12 @@ logsources:
     service: system
     conditions:
       EventChannel: System
+    index: WINDOWS
+  windows-dhcp:
+    product: windows
+    service: dhcp
+    conditions: 
+      EventChannel: Microsoft-Windows-DHCP-Server
     index: WINDOWS
   apache:
     product: apache

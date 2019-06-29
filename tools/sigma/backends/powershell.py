@@ -27,7 +27,7 @@ class PowerShellBackend(SingleTextQueryBackend):
         ("csv", False, "Return the results in CSV format instead of Powershell objects", None),
     )
 
-    reEscape = re.compile('("|\\\\(?![*?])|\+)')
+    reEscape = re.compile('("|(?<!\\\\)\\\\(?![*?\\\\])|\+)')
     reClear = None
     andToken = " -and "
     orToken = " -or "
@@ -123,6 +123,8 @@ class PowerShellBackend(SingleTextQueryBackend):
                 return self.mapExpression % (key, self.generateNode(value))
         elif type(value) == list:
             return self.generateMapItemListNode(key, value)
+        elif value is None:
+            return self.nullExpression % (key, )
         else:
             raise TypeError("Backend does not support map values of type " + str(type(value)))
 

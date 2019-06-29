@@ -1,3 +1,7 @@
+title: QRadar
+backends:
+  - qradar
+order: 20
 logsources:
   apache:
     product: apache
@@ -26,11 +30,14 @@ logsources:
    index: flows
 
 fieldmappings:
-  dst:
-    - destinationIP
-  dst_ip:
-    - destinationIP
-  src:
-    - sourceIP
-  src_ip:
-    - sourceIP
+    EventID:
+        - Event ID Code
+    dst:
+        - destinationIP
+    dst_ip:
+        - destinationIP
+    src:
+        - sourceIP
+    src_ip:
+        - sourceIP
+    ServiceFileName: Service Name

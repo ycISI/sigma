@@ -21,12 +21,13 @@ detection:
 tags:
     - attack.execution
     - attack.persistence
-    - attack.privelege_escalation
+    - attack.privilege_escalation
     - attack.t1053
     - attack.t1086
     - attack.s0111
     - attack.g0022
     - attack.g0060
+    - car.2013-08-001
 falsepositives:
     - False positives are possible, depends on organisation and processes
 level: high
